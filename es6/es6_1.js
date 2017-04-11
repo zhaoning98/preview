@@ -172,7 +172,28 @@ export default foo;
 
 // 同样地，因为 export default 本质是将该命令后面的值，赋给 default 以后再默认，所以直接将一个值写在 export  default 之后
 
-// 
+// 如果想在一条 import 语句中，同时输入默认方法和其他变量，可以写成下面这样。
+import _, { each } from 'lodash';
+// 对应上面代码的 export 语句如下。
+export default function (obj) {
+	//...
+}
+export function each(obj, iterator, context) {
+	//...
+}
+export { each as forEach };
+// 上面代码的最后一行的意思是，暴露出 forEach 接口，默认指向 each 接口，即 forEach 和 each 指向同一方法。
+
+// export default 也可以用来输出类。
+// MyClass.js
+export default class { ... } 
+// main.js
+import MyClass from 'MyClass';
+let o = new MyClass();
+
+// 7、export 与 import 的复合写法
+// 如果在一个模块之中，先输入后输出同一个模块，
+
 
 
 
